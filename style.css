@@ -99,3 +99,32 @@ button:hover {
   text-align: center;
   padding: 1rem;
 }
+
+/* Tema escuro */
+.dark-theme {
+  background-color: #121212;
+  color: #eee;
+}
+
+.dark-theme header {
+  background-color: #1f1f1f;
+}
+
+.dark-theme section {
+  background-color: #222;
+  box-shadow: none;
+  color: #ddd;
+}
+
+.dark-theme a {
+  color: #6ab1ff;
+}
+
+.dark-theme button {
+  background-color: #444;
+  color: #eee;
+}
+
+.dark-theme button:hover {
+  background-color: #666;
+}
