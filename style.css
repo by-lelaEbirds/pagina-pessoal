@@ -103,6 +103,27 @@ button:hover {
   transform: scale(1.03);
 }
 
+/* botão de alternar tema (correção para ficar acima do terminal) */
+.botao-tema {
+  background-color: #003300;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: block;
+  margin: 2rem auto 5rem; /* margem inferior aumentada para não colidir com o terminal */
+  position: relative;
+  z-index: 3;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.botao-tema:hover {
+  background-color: #005500;
+  transform: scale(1.03);
+}
+
 /* evolução (parte) */
 #evolucao {
   border: 2px dashed #00ff00;
@@ -176,7 +197,8 @@ button:hover {
     font-size: 1rem;
   }
 
-  button {
+  button,
+  .botao-tema {
     width: 100%;
   }
 
