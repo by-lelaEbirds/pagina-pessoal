@@ -1,25 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Pessoal de Matheus Peres da Silva</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Página Hacker de Matheus</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Matrix Canvas */
+    #matrixCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background-color: black;
+    }
+
+    /* Terminal Style */
+    body {
+      font-family: 'Courier New', monospace;
+      background-color: black;
+      color: #00ff00;
+      margin: 0;
+      padding: 0;
+    }
+
+    .terminal {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      padding: 1rem;
+      font-size: 1rem;
+      color: #00ff00;
+      background: rgba(0, 0, 0, 0.6);
+      width: 100%;
+      z-index: 1;
+    }
+
+    .blinking-cursor {
+      animation: blink 1s steps(2, start) infinite;
+    }
+
+    @keyframes blink {
+      to {
+        visibility: hidden;
+      }
+    }
+
+    header, main, section, h1, h2, p, ul, li, a, button {
+      color: #00ff00;
+    }
+
+    a {
+      color: #00ff00;
+      text-decoration: underline;
+    }
+
+    button {
+      background-color: #003300;
+      color: #00ff00;
+      border: 1px solid #00ff00;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005500;
+    }
+
+    img.perfil-img {
+      border: 2px solid #00ff00;
+      border-radius: 50%;
+      width: 180px;
+      display: block;
+      margin: 1rem auto;
+    }
+
+    section {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 1rem;
+      margin: 1rem;
+      border: 1px solid #00ff00;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body onload="boasVindas()">
+  <canvas id="matrixCanvas"></canvas>
+
   <header>
     <h1>Matheus Peres da Silva</h1>
     <p>Estudante de Negócios Digitais</p>
-    <img src="perfil.jpg" alt="Foto de perfil de Matheus Peres da Silva" class="perfil-img">
+    <img src="perfil.jpg" alt="Foto de perfil de Matheus Peres da Silva" class="perfil-img" />
   </header>
 
   <main>
     <section id="sobre">
       <h2>Sobre Mim</h2>
-      <p>Tenho 23 anos, sou estudante apaixonado por tecnologia, inovação e negócios digitais. Atualmente estudo Negócios Digitais na FAE Centro Universitário. Antes disso, cursei quatro anos de Negócios Internacionais, o que me deu uma base sólida em comércio global, estratégia e visão empresarial. O novo curso, no entanto, me trouxe mais entusiasmo por unir tecnologia e gestão.</p>
+      <p>Tenho 23 anos, sou estudante apaixonado por tecnologia, inovação e negócios digitais. Atualmente estudo Negócios Digitais na FAE Centro Universitário. Antes disso, cursei quatro anos de Negócios Internacionais...</p>
     </section>
 
     <section id="habilidades">
@@ -36,12 +113,12 @@
 
     <section id="interesses">
       <h2>Interesses Profissionais</h2>
-      <p>Tenho interesse em áreas como desenvolvimento front-end, transformação digital, produtos digitais, UX/UI, e soluções inovadoras que unam tecnologia e negócios. Também busco me aprofundar em marketing digital, análise de dados e empreendedorismo digital.</p>
+      <p>Tenho interesse em desenvolvimento front-end, transformação digital, produtos digitais, UX/UI, marketing digital e empreendedorismo.</p>
     </section>
 
     <section id="evolucao">
       <h2>Evolução Futura</h2>
-      <p>Em breve, este espaço será preenchido com projetos, ideias, artigos ou experiências profissionais que venham a enriquecer meu portfólio.</p>
+      <p>Em breve, este espaço será preenchido com projetos, ideias, artigos ou experiências profissionais.</p>
     </section>
 
     <section id="contato">
@@ -53,17 +130,64 @@
 
     <section id="reflexao">
       <h2>O que eu aprendi com essa missão?</h2>
-      <p>Aprendi a construir uma página pessoal estruturada, utilizando HTML semântico, CSS responsivo e JavaScript para interações simples. Desenvolver essa página me ajudou a entender como apresentar minha identidade digital de forma clara e funcional, além de fortalecer minhas habilidades em front-end.</p>
+      <p>Aprendi a construir uma página pessoal estruturada, com HTML semântico, CSS e JavaScript. Essa página representa minha identidade digital de forma clara.</p>
     </section>
 
     <button onclick="toggleTheme()" class="botao-tema">🌙 Alternar Tema</button>
   </main>
 
-  <script src="script.js"></script>
+  <div class="terminal">
+    matheus@localhost:~$ echo "Bem-vindo à minha página pessoal"
+    <span class="blinking-cursor">|</span>
+  </div>
+
+  <script>
+    // Matrix Rain Effect
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = '01アァイゥエオカガキギクグケゲコゴ'.split('');
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array.from({ length: columns }).fill(1);
+
+    function draw() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#0F0';
+      ctx.font = fontSize + 'px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 33);
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // Mensagem de boas-vindas
+    function boasVindas() {
+      alert("Bem-vindo(a) à página pessoal de Matheus Peres da Silva!");
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("dark-theme");
+    }
+  </script>
 </body>
 </html>
-
-<div class="terminal">
-  matheus@localhost:~$ echo "Bem-vindo à minha página pessoal"
-  <span class="blinking-cursor">|</span>
-</div>
