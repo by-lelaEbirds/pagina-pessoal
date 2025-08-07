@@ -1,4 +1,4 @@
-/* ======= BASE TERMINAL ======= */
+/* aqui é um terminal estilo matriquiz */
 body {
   font-family: 'Courier New', monospace;
   margin: 0;
@@ -10,7 +10,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ======= CABEÇALHO ======= */
+/* aqui é o cabeçalho */
 header {
   background-color: #000;
   color: #00ff00;
@@ -29,7 +29,7 @@ header p {
   margin-top: 0.5rem;
 }
 
-/* ======= IMAGEM ======= */
+/* minha foto que peguei do linkedin */
 .perfil-img {
   display: block;
   max-width: 180px;
@@ -41,14 +41,14 @@ header p {
   box-shadow: 0 0 10px #00ff00;
 }
 
-/* ======= CONTEÚDO ======= */
+/* blabla */
 main {
   max-width: 900px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
-/* ======= SEÇÕES ======= */
+/* seções */
 section {
   margin-bottom: 2rem;
   background-color: #000;
@@ -58,7 +58,7 @@ section {
   box-shadow: 0 0 10px #00ff0055;
 }
 
-/* ======= TÍTULOS ======= */
+/* titulos e tal */
 h2 {
   border-bottom: 2px solid #00ff00;
   padding-bottom: 0.3rem;
@@ -66,13 +66,13 @@ h2 {
   color: #00ff00;
 }
 
-/* ======= LISTAS ======= */
+/* lsta */
 ul {
   list-style-type: square;
   padding-left: 1.5rem;
 }
 
-/* ======= LINKS ======= */
+/* links pras minhas redes */
 a {
   color: #00ff00;
   text-decoration: none;
@@ -84,7 +84,7 @@ a:hover {
   color: #00cc00;
 }
 
-/* ======= BOTÕES ======= */
+/* botões para clickar */
 button {
   background-color: #003300;
   color: #00ff00;
@@ -103,7 +103,7 @@ button:hover {
   transform: scale(1.03);
 }
 
-/* ======= CAIXA DE EVOLUÇÃO ======= */
+/* evolução (parte) */
 #evolucao {
   border: 2px dashed #00ff00;
   background-color: #001100;
@@ -114,7 +114,7 @@ button:hover {
   font-style: italic;
 }
 
-/* ======= TERMINAL FOOTER ======= */
+/* terminal, agora vai */
 .terminal {
   position: fixed;
   bottom: 0;
@@ -129,7 +129,7 @@ button:hover {
   border-top: 1px solid #00ff00;
 }
 
-/* ======= CURSOR PISCANDO ======= */
+/* cursor piscando (funciona?) */
 .blinking-cursor {
   animation: blink 1s steps(2, start) infinite;
 }
@@ -140,7 +140,7 @@ button:hover {
   }
 }
 
-/* ======= DARK THEME (opcional via botão) ======= */
+/* botão para tema preto (opcional via botão), só funcionou para os quadros das seções? vai ficar assim eu acho ======= */
 .dark-theme {
   background-color: #000;
   color: #00ff00;
@@ -166,7 +166,7 @@ button:hover {
   background-color: #004400;
 }
 
-/* ======= RESPONSIVO ======= */
+/* respons */
 @media (max-width: 600px) {
   header h1 {
     font-size: 1.6rem;
