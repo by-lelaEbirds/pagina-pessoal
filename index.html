@@ -32,8 +32,27 @@
 
     <div id="hack-screen">
         <canvas id="matrix-canvas"></canvas>
-        <div class="hack-message">
-            <h1 class="typewriter">YOU HAVE BEEN HACKED_</h1>
+        
+        <div class="hack-message ransom-note">
+            <h1 class="typewriter">YOUR FILES ARE ENCRYPTED!</h1>
+            
+            <p class="ransom-text">
+                All your important files have been encrypted. To recover your data,
+                you must send 0.5 BTC to the wallet below.
+            </p>
+            
+            <div class="btc-wallet">
+                <span>bc1qxy2kcy9ycy0wtyrw9y8qoy2kcy9ycy0wtyrw9y</span>
+            </div>
+            
+            <div class="timer">
+                Time remaining: <span id="countdown">10:00</span>
+            </div>
+            
+            <button id="pay-button" class="btn-scanline pay-button">
+                ./pay_ransom.sh
+            </button>
+            <p id="payment-status"></p>
         </div>
     </div>
 
