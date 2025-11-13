@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const payButton = document.getElementById('pay-button');
     const paymentStatus = document.getElementById('payment-status');
     const countdownEl = document.getElementById('countdown');
+    const hackMessageBox = document.getElementById('hack-message-box'); // Pega a caixa de msg
 
     // --- LÓGICA DA CHUVA MATRIX ---
     const canvas = document.getElementById('matrix-canvas');
@@ -108,26 +109,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- LÓGICA DO BOTÃO DE PAGAMENTO ---
+    // --- LÓGICA DO BOTÃO DE PAGAMENTO (COM "ACCESS GRANTED") ---
     payButton.addEventListener('click', async () => {
         paymentStatus.textContent = "// Processing payment... please wait...";
         payButton.disabled = true;
         payButton.textContent = "PROCESSING...";
 
-        await new Promise(resolve => setTimeout(resolve, 3000));
-        paymentStatus.textContent = "// Payment successful. Decrypting files...";
+        // Simula o "processamento" por 2 segundos
         await new Promise(resolve => setTimeout(resolve, 2000));
 
+        // === MUDANÇA: TELA "ACCESS GRANTED" ===
+        clearInterval(countdownInterval); // Para o timer
+        hackMessageBox.classList.add('access-granted'); // Muda a cor para VERDE
+        hackMessageBox.innerHTML = `
+            <h1>ACCESS GRANTED</h1>
+            <p>// Payment verified. Decrypting file system... Welcome back, agent.</p>
+        `;
+        // Deixa a mensagem de "Access Granted" na tela por 3 segundos
+        await new Promise(resolve => setTimeout(resolve, 3000));
+
+
+        // --- A TRANSIÇÃO FINAL ---
         stopMatrixRain();
-        clearInterval(countdownInterval);
         hackScreen.style.display = 'none';
+
+        // Mostra o portfólio
         portfolioScreen.style.display = 'flex';
         
+        // Preenche os dados do portfólio
         welcomeMessage.textContent = `> Bem-vindo, ${currentUserData.nome}`;
         
+        // Carrega a lista de visitantes
         await carregarVisitantes(currentUserData.nome);
 
-        // *** ATIVA A ANIMAÇÃO DOS TÍTULOS ***
+        // Ativa os títulos "digitando"
         startTitleObserver();
     });
 
@@ -167,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- LÓGICA DO NOVO TYPEWRITER DOS TÍTULOS ---
+    // --- LÓGICA DO TYPEWRITER DOS TÍTULOS ---
     function typeWriter(element, text, speed) {
         let i = 0;
         element.innerHTML = ""; // Limpa o span
@@ -189,19 +204,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (entry.isIntersecting) {
                     const span = entry.target.querySelector('.type-title');
                     if (span && !span.classList.contains('typed')) {
-                        span.classList.add('typed'); // Marca para não digitar de novo
-                        const text = span.getAttribute('data-text');
+                        span.classList.add('typed');
+g                        const text = span.getAttribute('data-text');
                         typeWriter(span, text, 50); // 50ms de velocidade
                     }
-                    observer.unobserve(entry.target); // Para de observar depois de animar
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.5 }); // Inicia quando 50% da seção estiver visível
+        }, { threshold: 0.5 });
 
-        // Observa todas as seções dentro do portfólio
         document.querySelectorAll('#portfolio-screen section').forEach(section => {
             observer.observe(section);
         });
     }
-
 });
