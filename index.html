@@ -6,20 +6,12 @@
     <title>Portfólio_</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div id="hack-screen" class="container">
-        <div class="matrix-effect"></div> <div class="hack-message">
-            <span class="typewriter" data-text="YOU HAVE BEEN HACKED_"></span>
-            <p>// Accessing secure data...</p>
-            <p>// Initiating login bypass protocol...</p>
-        </div>
-    </div>
-
-    <div id="login-screen" class="container" style="display: none;">
+    <div id="login-screen" class="container">
         <div class="login-box">
             <h1>system.init()</h1>
             <p>// Autenticação necessária para acessar o portfólio_</p>
@@ -35,6 +27,13 @@
                 <button type="submit" class="btn-scanline">./execute_login.sh</button>
                 <p id="login-error" class="error-message"></p>
             </form>
+        </div>
+    </div>
+
+    <div id="hack-screen">
+        <canvas id="matrix-canvas"></canvas>
+        <div class="hack-message">
+            <h1 class="typewriter">YOU HAVE BEEN HACKED_</h1>
         </div>
     </div>
 
@@ -58,7 +57,7 @@
 
             <section id="sobre">
                 <h2>>&nbsp;./sobre_mim.sh</h2>
-                <p>Olá! Sou um estudante de programação apaixonado por resolver problemas. Meu foco é aprender e aplicar tecnologias modernas para criar soluções eficientes e seguras...</p>
+                <p>Olá! Sou um estudante de programação apaixonado por resolver problemas...</p>
                 
                 <pre class="ascii-art">
       uuuuuuuuuuuuuuuuuuuuu.
@@ -114,17 +113,9 @@ $$         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
             <section id="projetos">
                 <h2>>&nbsp;./meus_projetos/</h2>
                 <div class="project-grid">
-                    <div class="project-card">
-                        <h3>Projeto 1: API de Tarefas</h3>
-                        <p>Backend (Node.js) e Frontend (HTML/JS) para gerenciamento de tarefas.</p>
-                        <a href="#">[ver_repo]</a>
-                    </div>
-                    <div class="project-card">
-                        <h3>Projeto 2: EduConnect</h3>
-                        <p>Plataforma de mentoria para projeto universitário.</p>
-                        <a href="#">[ver_repo]</a>
-                    </div>
-                    </div>
+                    <div class="project-card"><h3>Projeto 1: API de Tarefas</h3><p>...</p><a href="#">[ver_repo]</a></div>
+                    <div class="project-card"><h3>Projeto 2: EduConnect</h3><p>...</p><a href="#">[ver_repo]</a></div>
+                </div>
             </section>
 
             <section id="disciplina">
@@ -138,7 +129,6 @@ $$         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
                     <li><span class="highlight">[OK]</span> Integração com serviços de terceiros (Airtable).</li>
                 </ul>
             </section>
-
         </main>
     </div>
 
