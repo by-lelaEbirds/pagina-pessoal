@@ -44,21 +44,9 @@ h1, h2, h3 {
     align-items: center;
 }
 
-/* --- TELA DE LOGIN (Visível por padrão) --- */
-#login-screen {
-    /* (Já tem display: flex pelo .container) */
-}
-
-.login-box {
-    width: 100%;
-    max-width: 400px;
-    border: 2px solid #00ff41;
-    padding: 25px;
-    background: #111;
-    box-shadow: 0 0 15px #00ff41;
-    z-index: 10;
-}
-
+/* --- TELA DE LOGIN --- */
+#login-screen { }
+.login-box { width: 100%; max-width: 400px; border: 2px solid #00ff41; padding: 25px; background: #111; box-shadow: 0 0 15px #00ff41; z-index: 10; }
 .login-box h1 { font-size: 2.5rem; border-bottom: 1px dashed #00ff41; padding-bottom: 10px; margin-bottom: 15px; }
 .login-box p { color: #888; font-size: 1rem; margin-bottom: 20px; }
 .form-group { margin-bottom: 15px; }
@@ -68,110 +56,21 @@ input[type="text"], input[type="password"] { width: 100%; background: #0d0d0d; b
 .btn-scanline:hover { background-color: #0d0d0d; color: #00ff41; border: 1px solid #00ff41; }
 .error-message { color: #ff0000; text-shadow: 0 0 5px #ff0000; margin-top: 10px; height: 20px; }
 
-/* --- TELA DE HACK / RANSOMWARE (NOVA) --- */
-#hack-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #000;
-    display: none; /* JS vai ativar isso */
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    overflow: hidden;
-}
+/* --- TELA DE HACK / RANSOMWARE --- */
+#hack-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; display: none; justify-content: center; align-items: center; z-index: 1000; overflow: hidden; }
+#matrix-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1001; }
+.hack-message { position: relative; z-index: 1002; text-align: center; background: rgba(0, 0, 0, 0.85); border: 2px solid #ff0000; box-shadow: 0 0 20px #ff0000; padding: 40px; max-width: 800px; color: #ff0000; text-shadow: 0 0 10px #ff0000; }
+.hack-message h1 { font-size: 3.5rem; white-space: nowrap; overflow: hidden; border-right: .15em solid #ff0000; margin: 0 auto; width: 0; animation: typewriter-anim 3s steps(27, end) forwards, blink-anim .75s step-end infinite; }
+.ransom-text { font-size: 1.2rem; color: #fff; text-shadow: none; margin-top: 20px; }
+.btc-wallet { background: #111; border: 1px solid #ff0000; padding: 15px; margin: 20px 0; font-size: 1.1rem; color: #fff; text-shadow: none; word-wrap: break-word; }
+.timer { font-size: 2rem; margin-bottom: 25px; }
+.pay-button { background-color: #ff0000; color: #000; border: 1px solid #ff0000; font-size: 1.5rem; padding: 15px 30px; }
+.pay-button:hover { background-color: #000; color: #ff0000; }
+#payment-status { margin-top: 15px; font-size: 1.2rem; height: 20px; }
+@keyframes typewriter-anim { from { width: 0; } to { width: 100%; } }
+@keyframes blink-anim { from, to { border-color: transparent } 50% { border-color: #ff0000; } }
 
-#matrix-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1001;
-}
-
-.hack-message {
-    position: relative;
-    z-index: 1002; /* Na frente do canvas */
-    text-align: center;
-    background: rgba(0, 0, 0, 0.85); /* Fundo mais opaco */
-    border: 2px solid #ff0000; /* Borda vermelha */
-    box-shadow: 0 0 20px #ff0000;
-    padding: 40px;
-    max-width: 800px;
-    color: #ff0000; /* Cor do texto de ransom */
-    text-shadow: 0 0 10px #ff0000;
-}
-
-.hack-message h1 {
-    font-size: 3.5rem;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: .15em solid #ff0000;
-    margin: 0 auto;
-    width: 0; /* JS vai animar isso */
-    animation: 
-        typewriter-anim 3s steps(27, end) forwards,
-        blink-anim .75s step-end infinite;
-}
-
-.ransom-text {
-    font-size: 1.2rem;
-    color: #fff; /* Texto explicativo em branco */
-    text-shadow: none;
-    margin-top: 20px;
-}
-
-.btc-wallet {
-    background: #111;
-    border: 1px solid #ff0000;
-    padding: 15px;
-    margin: 20px 0;
-    font-size: 1.1rem;
-    color: #fff;
-    text-shadow: none;
-    word-wrap: break-word;
-}
-
-.timer {
-    font-size: 2rem;
-    margin-bottom: 25px;
-}
-
-.pay-button {
-    background-color: #ff0000;
-    color: #000;
-    border: 1px solid #ff0000;
-    font-size: 1.5rem;
-    padding: 15px 30px;
-}
-.pay-button:hover {
-    background-color: #000;
-    color: #ff0000;
-}
-
-#payment-status {
-    margin-top: 15px;
-    font-size: 1.2rem;
-    height: 20px;
-}
-
-
-/* Animação de digitação */
-@keyframes typewriter-anim {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes blink-anim {
-    from, to { border-color: transparent }
-    50% { border-color: #ff0000; }
-}
-
-
-/* --- TELA DO PORTFOLIO (Escondida) --- */
+/* --- TELA DO PORTFOLIO --- */
 #portfolio-screen {
     max-width: 1200px;
     margin: 0 auto;
@@ -179,19 +78,31 @@ input[type="text"], input[type="password"] { width: 100%; background: #0d0d0d; b
     opacity: 0;
     animation: fadeIn 1s forwards;
     /* display: none; (JS vai mudar para flex) */
+    
+    /* === MUDANÇA DA SIDEBAR (CORREÇÃO) === */
+    align-items: flex-start; /* Alinha os itens no topo */
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* (O resto do CSS do portfólio, sidebar, etc., é idêntico ao de antes) */
-.sidebar { flex: 0 0 250px; border: 2px solid #00ff41; background: #111; padding: 15px; height: fit-content; }
+/* Sidebar */
+.sidebar {
+    flex: 0 0 250px;
+    border: 2px solid #00ff41;
+    background: #111;
+    padding: 15px;
+    
+    /* === MUDANÇA DA SIDEBAR (CORREÇÃO) === */
+    /* height: fit-content; (REMOVIDO! Isso que jogava pra baixo) */
+    position: sticky; /* Bônus: faz ela grudar no topo ao rolar */
+    top: 20px;
+}
 .sidebar h3 { border-bottom: 1px dashed #00ff41; padding-bottom: 5px; }
 #lista-visitantes { list-style: none; margin-top: 10px; max-height: 400px; overflow-y: auto; }
 #lista-visitantes li { padding: 5px 0; animation: textAppear 0.5s; }
 @keyframes textAppear { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+
+/* Conteúdo Principal */
 .content { flex: 1; }
 .header-matrix { display: flex; align-items: center; gap: 20px; padding: 20px; border: 2px solid #00ff41; background: #111; margin-bottom: 30px; }
 .profile-pic { width: 100px; height: 100px; border-radius: 50%; border: 2px solid #00ff41; object-fit: cover; }
@@ -199,11 +110,81 @@ input[type="text"], input[type="password"] { width: 100%; background: #0d0d0d; b
 section { border: 1px dashed #00ff41; padding: 20px; margin-bottom: 30px; background: #111; }
 section h2 { font-size: 1.8rem; margin-bottom: 15px; }
 section p, section li { line-height: 1.6; }
-.highlight { background-color: #00ff41; color: #0d0d0d; padding: 0 5px; text-shadow: none; font-weight: bold; }
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
-.project-card { border: 1px solid #00ff41; padding: 15px; }
-.project-card a { color: #00ff41; text-decoration: none; font-weight: bold; }
 .main-welcome { font-size: 2rem; margin-bottom: 20px; border: 1px dashed #00ff41; background: #111; padding: 15px; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 .blinking-cursor { animation: blink 1.2s infinite; }
 .ascii-art { font-size: 0.4rem; text-align: center; margin-top: 25px; line-height: 1.1; text-shadow: none; color: #00a02a; overflow-x: auto; padding: 5px; }
+
+/* === MUDANÇA: PROJETOS E SKILL TAGS (A "DICA" TOP) === */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+.project-card {
+    border: 1px solid #00ff41;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    background: #111;
+}
+.project-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+.project-card p {
+    flex-grow: 1;
+    margin-bottom: 15px;
+    color: #ccc;
+    text-shadow: none;
+}
+.project-card-skills {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+.project-card a {
+    color: #00ff41;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #00ff41;
+    padding: 8px 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin-top: auto; /* Empurra o botão pra baixo */
+}
+.project-card a:hover {
+    background: #00ff41;
+    color: #000;
+    text-shadow: none;
+}
+
+/* === AS NOVAS "SKILL TAGS" === */
+.skill-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin: 2px;
+    text-shadow: none;
+    font-weight: bold;
+}
+.skill-tag.frontend {
+    background-color: #007bff; /* Azul */
+    color: #fff;
+}
+.skill-tag.backend {
+    background-color: #00ff41; /* Verde (nosso tema) */
+    color: #000;
+}
+.skill-tag.data {
+    background-color: #ffc107; /* Amarelo */
+    color: #000;
+}
+.skill-tag.management {
+    background-color: #6f42c1; /* Roxo */
+    color: #fff;
+}
+.skill-tag.security {
+    background-color: #ff0000; /* Vermelho (do ransom) */
+    color: #fff;
+}
