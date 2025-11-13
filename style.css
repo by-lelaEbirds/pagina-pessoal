@@ -39,7 +39,7 @@ h1, h2, h3 {
     width: 100%;
     min-height: 100vh;
     padding: 20px;
-    display: flex; /* Para centralizar os conteúdos */
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -56,69 +56,19 @@ h1, h2, h3 {
     padding: 25px;
     background: #111;
     box-shadow: 0 0 15px #00ff41;
-    z-index: 10; /* Fica na frente das scanlines */
+    z-index: 10;
 }
 
-.login-box h1 {
-    font-size: 2.5rem;
-    border-bottom: 1px dashed #00ff41;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-}
+.login-box h1 { font-size: 2.5rem; border-bottom: 1px dashed #00ff41; padding-bottom: 10px; margin-bottom: 15px; }
+.login-box p { color: #888; font-size: 1rem; margin-bottom: 20px; }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; }
+input[type="text"], input[type="password"] { width: 100%; background: #0d0d0d; border: 1px solid #00ff41; color: #00ff41; padding: 10px; font-family: 'VT323', monospace; font-size: 1.2rem; outline: none; }
+.btn-scanline { background-color: #00ff41; color: #0d0d0d; border: none; padding: 12px 20px; font-family: 'VT323', monospace; font-size: 1.2rem; cursor: pointer; text-shadow: none; transition: all 0.3s ease; width: 100%; }
+.btn-scanline:hover { background-color: #0d0d0d; color: #00ff41; border: 1px solid #00ff41; }
+.error-message { color: #ff0000; text-shadow: 0 0 5px #ff0000; margin-top: 10px; height: 20px; }
 
-.login-box p {
-    color: #888;
-    font-size: 1rem;
-    margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input[type="text"], input[type="password"] {
-    width: 100%;
-    background: #0d0d0d;
-    border: 1px solid #00ff41;
-    color: #00ff41;
-    padding: 10px;
-    font-family: 'VT323', monospace;
-    font-size: 1.2rem;
-    outline: none;
-}
-
-.btn-scanline {
-    background-color: #00ff41;
-    color: #0d0d0d;
-    border: none;
-    padding: 12px 20px;
-    font-family: 'VT323', monospace;
-    font-size: 1.2rem;
-    cursor: pointer;
-    text-shadow: none;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.btn-scanline:hover {
-    background-color: #0d0d0d;
-    color: #00ff41;
-    border: 1px solid #00ff41;
-}
-
-.error-message {
-    color: #ff0000;
-    text-shadow: 0 0 5px #ff0000;
-    margin-top: 10px;
-    height: 20px;
-}
-
-/* --- TELA DE HACK (NOVA) --- */
+/* --- TELA DE HACK / RANSOMWARE (NOVA) --- */
 #hack-screen {
     position: fixed;
     top: 0;
@@ -146,19 +96,68 @@ input[type="text"], input[type="password"] {
     position: relative;
     z-index: 1002; /* Na frente do canvas */
     text-align: center;
-    color: #00ff41;
-    text-shadow: 0 0 15px #00ff41;
+    background: rgba(0, 0, 0, 0.85); /* Fundo mais opaco */
+    border: 2px solid #ff0000; /* Borda vermelha */
+    box-shadow: 0 0 20px #ff0000;
+    padding: 40px;
+    max-width: 800px;
+    color: #ff0000; /* Cor do texto de ransom */
+    text-shadow: 0 0 10px #ff0000;
 }
 
 .hack-message h1 {
-    font-size: 4.5rem; /* BEM GRANDE */
+    font-size: 3.5rem;
     white-space: nowrap;
     overflow: hidden;
-    border-right: .15em solid #00ff41;
+    border-right: .15em solid #ff0000;
+    margin: 0 auto;
+    width: 0; /* JS vai animar isso */
     animation: 
-        typewriter-anim 3s steps(23, end) forwards,
+        typewriter-anim 3s steps(27, end) forwards,
         blink-anim .75s step-end infinite;
 }
+
+.ransom-text {
+    font-size: 1.2rem;
+    color: #fff; /* Texto explicativo em branco */
+    text-shadow: none;
+    margin-top: 20px;
+}
+
+.btc-wallet {
+    background: #111;
+    border: 1px solid #ff0000;
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 1.1rem;
+    color: #fff;
+    text-shadow: none;
+    word-wrap: break-word;
+}
+
+.timer {
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.pay-button {
+    background-color: #ff0000;
+    color: #000;
+    border: 1px solid #ff0000;
+    font-size: 1.5rem;
+    padding: 15px 30px;
+}
+.pay-button:hover {
+    background-color: #000;
+    color: #ff0000;
+}
+
+#payment-status {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    height: 20px;
+}
+
 
 /* Animação de digitação */
 @keyframes typewriter-anim {
@@ -168,7 +167,7 @@ input[type="text"], input[type="password"] {
 
 @keyframes blink-anim {
     from, to { border-color: transparent }
-    50% { border-color: #00ff41; }
+    50% { border-color: #ff0000; }
 }
 
 
@@ -187,133 +186,24 @@ input[type="text"], input[type="password"] {
     to { opacity: 1; }
 }
 
-/* Sidebar */
-.sidebar {
-    flex: 0 0 250px;
-    border: 2px solid #00ff41;
-    background: #111;
-    padding: 15px;
-    height: fit-content;
-}
-
-.sidebar h3 {
-    border-bottom: 1px dashed #00ff41;
-    padding-bottom: 5px;
-}
-
-#lista-visitantes {
-    list-style: none;
-    margin-top: 10px;
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-#lista-visitantes li {
-    padding: 5px 0;
-    animation: textAppear 0.5s;
-}
-
-@keyframes textAppear {
-    from { opacity: 0; transform: translateX(-10px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-/* Conteúdo Principal */
-.content {
-    flex: 1;
-}
-
-.header-matrix {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
-    border: 2px solid #00ff41;
-    background: #111;
-    margin-bottom: 30px;
-}
-
-.profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 2px solid #00ff41;
-    object-fit: cover;
-}
-
-.header-info p {
-    color: #bbb;
-    text-shadow: none;
-    font-size: 1.1rem;
-}
-
-/* Seções */
-section {
-    border: 1px dashed #00ff41;
-    padding: 20px;
-    margin-bottom: 30px;
-    background: #111;
-}
-
-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-section p, section li {
-    line-height: 1.6;
-}
-
-.highlight {
-    background-color: #00ff41;
-    color: #0d0d0d;
-    padding: 0 5px;
-    text-shadow: none;
-    font-weight: bold;
-}
-
-/* Grid de Projetos */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-}
-
-.project-card {
-    border: 1px solid #00ff41;
-    padding: 15px;
-}
-
-.project-card a {
-    color: #00ff41;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.main-welcome {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    border: 1px dashed #00ff41;
-    background: #111;
-    padding: 15px;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-.blinking-cursor {
-    animation: blink 1.2s infinite;
-}
-
-.ascii-art {
-    font-size: 0.4rem;
-    text-align: center;
-    margin-top: 25px;
-    line-height: 1.1;
-    text-shadow: none;
-    color: #00a02a;
-    overflow-x: auto;
-    padding: 5px;
-}
+/* (O resto do CSS do portfólio, sidebar, etc., é idêntico ao de antes) */
+.sidebar { flex: 0 0 250px; border: 2px solid #00ff41; background: #111; padding: 15px; height: fit-content; }
+.sidebar h3 { border-bottom: 1px dashed #00ff41; padding-bottom: 5px; }
+#lista-visitantes { list-style: none; margin-top: 10px; max-height: 400px; overflow-y: auto; }
+#lista-visitantes li { padding: 5px 0; animation: textAppear 0.5s; }
+@keyframes textAppear { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+.content { flex: 1; }
+.header-matrix { display: flex; align-items: center; gap: 20px; padding: 20px; border: 2px solid #00ff41; background: #111; margin-bottom: 30px; }
+.profile-pic { width: 100px; height: 100px; border-radius: 50%; border: 2px solid #00ff41; object-fit: cover; }
+.header-info p { color: #bbb; text-shadow: none; font-size: 1.1rem; }
+section { border: 1px dashed #00ff41; padding: 20px; margin-bottom: 30px; background: #111; }
+section h2 { font-size: 1.8rem; margin-bottom: 15px; }
+section p, section li { line-height: 1.6; }
+.highlight { background-color: #00ff41; color: #0d0d0d; padding: 0 5px; text-shadow: none; font-weight: bold; }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+.project-card { border: 1px solid #00ff41; padding: 15px; }
+.project-card a { color: #00ff41; text-decoration: none; font-weight: bold; }
+.main-welcome { font-size: 2rem; margin-bottom: 20px; border: 1px dashed #00ff41; background: #111; padding: 15px; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.blinking-cursor { animation: blink 1.2s infinite; }
+.ascii-art { font-size: 0.4rem; text-align: center; margin-top: 25px; line-height: 1.1; text-shadow: none; color: #00a02a; overflow-x: auto; padding: 5px; }
