@@ -1,212 +1,258 @@
-/* aqui é um terminal estilo matriquiz */
+/* RESET E CONFIGURAÇÃO GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: 'Courier New', monospace;
-  margin: 0;
-  padding: 0;
-  background-color: black;
-  color: #00ff00;
-  line-height: 1.6;
-  transition: background-color 0.3s, color 0.3s;
-  overflow-x: hidden;
+    background-color: #0d0d0d; /* Quase preto */
+    color: #00ff41; /* Verde "hacker" */
+    font-family: 'VT323', monospace; /* Fonte pixelada/terminal */
+    font-size: 18px;
+    text-shadow: 0 0 3px #00ff41, 0 0 5px #00ff41; /* Efeito neon */
+    overflow-x: hidden;
 }
 
-/* aqui é o cabeçalho */
-header {
-  background-color: #000;
-  color: #00ff00;
-  padding: 2rem 1rem;
-  text-align: center;
-  border-bottom: 2px solid #00ff00;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 2.2rem;
-}
-
-header p {
-  font-size: 1.2rem;
-  margin-top: 0.5rem;
-}
-
-/* minha foto que peguei do linkedin */
-.perfil-img {
-  display: block;
-  max-width: 180px;
-  width: 100%;
-  height: auto;
-  margin: 1.5rem auto 0.5rem;
-  border-radius: 50%;
-  border: 3px solid #00ff00;
-  box-shadow: 0 0 10px #00ff00;
-}
-
-/* blabla */
-main {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-/* seções */
-section {
-  margin-bottom: 2rem;
-  background-color: #000;
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid #00ff00;
-  box-shadow: 0 0 10px #00ff0055;
-}
-
-/* titulos e tal */
-h2 {
-  border-bottom: 2px solid #00ff00;
-  padding-bottom: 0.3rem;
-  margin-bottom: 1rem;
-  color: #00ff00;
-}
-
-/* lsta */
-ul {
-  list-style-type: square;
-  padding-left: 1.5rem;
-}
-
-/* links pras minhas redes */
-a {
-  color: #00ff00;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-a:hover {
-  text-decoration: underline;
-  color: #00cc00;
-}
-
-/* botões para clickar */
-button {
-  background-color: #003300;
-  color: #00ff00;
-  border: 1px solid #00ff00;
-  padding: 0.7rem 1.4rem;
-  font-size: 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  display: block;
-  margin: 2rem auto;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-button:hover {
-  background-color: #005500;
-  transform: scale(1.03);
-}
-
-/* botão de alternar tema (correção para ficar acima do terminal) */
-.botao-tema {
-  background-color: #003300;
-  color: #00ff00;
-  border: 1px solid #00ff00;
-  padding: 0.7rem 1.4rem;
-  font-size: 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  display: block;
-  margin: 2rem auto 5rem; /* margem inferior aumentada para não colidir com o terminal */
-  position: relative;
-  z-index: 3;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.botao-tema:hover {
-  background-color: #005500;
-  transform: scale(1.03);
-}
-
-/* evolução (parte) */
-#evolucao {
-  border: 2px dashed #00ff00;
-  background-color: #001100;
-  color: #00ff00;
-  padding: 1rem;
-  border-radius: 8px;
-  text-align: center;
-  font-style: italic;
-}
-
-/* terminal, agora vai */
-.terminal {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  font-size: 1rem;
-  color: #00ff00;
-  background: rgba(0, 0, 0, 0.8);
-  width: 100%;
-  z-index: 2;
-  font-family: 'Courier New', monospace;
-  border-top: 1px solid #00ff00;
-}
-
-/* cursor piscando (funciona?) */
-.blinking-cursor {
-  animation: blink 1s steps(2, start) infinite;
-}
-
-@keyframes blink {
-  to {
-    visibility: hidden;
-  }
-}
-
-/* botão para tema preto (opcional via botão), só funcionou para os quadros das seções? vai ficar assim eu acho ======= */
-.dark-theme {
-  background-color: #000;
-  color: #00ff00;
-}
-
-.dark-theme header,
-.dark-theme section {
-  background-color: #000;
-  border-color: #00ff00;
-}
-
-.dark-theme a {
-  color: #00ff00;
-}
-
-.dark-theme button {
-  background-color: #002200;
-  color: #00ff00;
-  border-color: #00ff00;
-}
-
-.dark-theme button:hover {
-  background-color: #004400;
-}
-
-/* respons */
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 1.6rem;
-  }
-
-  header p {
-    font-size: 1rem;
-  }
-
-  button,
-  .botao-tema {
+/* Efeito de "scanlines" (linhas de monitor antigo) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-  }
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    pointer-events: none;
+    z-index: 999;
+}
 
-  section {
-    padding: 1rem;
-  }
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+}
 
-  .perfil-img {
-    max-width: 140px;
-  }
+/* --- TELA DE LOGIN --- */
+#login-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid #00ff41;
+    padding: 25px;
+    background: #111;
+    box-shadow: 0 0 15px #00ff41;
+}
+
+.login-box h1 {
+    font-size: 2.5rem;
+    border-bottom: 1px dashed #00ff41;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.login-box p {
+    color: #888;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    background: #0d0d0d;
+    border: 1px solid #00ff41;
+    color: #00ff41;
+    padding: 10px;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    box-shadow: 0 0 10px #00ff41;
+}
+
+.btn-scanline {
+    background-color: #00ff41;
+    color: #0d0d0d;
+    border: none;
+    padding: 12px 20px;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-shadow: none;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-scanline:hover {
+    background-color: #0d0d0d;
+    color: #00ff41;
+    border: 1px solid #00ff41;
+    box-shadow: 0 0 10px #00ff41;
+}
+
+.error-message {
+    color: #ff0000; /* Vermelho erro */
+    text-shadow: 0 0 5px #ff0000;
+    margin-top: 10px;
+    height: 20px; /* Reserva espaço */
+}
+
+
+/* --- TELA DO PORTFOLIO --- */
+#portfolio-screen {
+    /* display: flex;  <= JS vai mudar para flex quando logar */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+    opacity: 0; /* Começa invisível para animar */
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 0 0 250px; /* Não cresce, não encolhe, base de 250px */
+    border: 2px solid #00ff41;
+    background: #111;
+    padding: 15px;
+    height: fit-content; /* Altura se ajusta ao conteúdo */
+}
+
+.sidebar h3 {
+    border-bottom: 1px dashed #00ff41;
+    padding-bottom: 5px;
+}
+
+#lista-visitantes {
+    list-style: none;
+    margin-top: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#lista-visitantes li {
+    padding: 5px 0;
+    animation: textAppear 0.5s;
+}
+/* Animação para lista */
+@keyframes textAppear {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Conteúdo Principal */
+.content {
+    flex: 1; /* Ocupa o resto do espaço */
+}
+
+.header-matrix {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border: 2px solid #00ff41;
+    background: #111;
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #00ff41;
+    object-fit: cover;
+}
+
+.header-info h1 {
+    font-size: 2rem;
+}
+
+.header-info p {
+    color: #bbb;
+    text-shadow: none;
+    font-size: 1.1rem;
+}
+
+/* Seções */
+section {
+    border: 1px dashed #00ff41;
+    padding: 20px;
+    margin-bottom: 30px;
+    background: #111;
+}
+
+section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+section p, section li {
+    line-height: 1.6;
+}
+
+section ul {
+    list-style-position: inside;
+    margin-top: 10px;
+}
+
+.highlight {
+    background-color: #00ff41;
+    color: #0d0d0d;
+    padding: 0 5px;
+    text-shadow: none;
+    font-weight: bold;
+}
+
+/* Grid de Projetos */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.project-card {
+    border: 1px solid #00ff41;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 10px #00ff41;
+}
+
+.project-card h3 {
+    margin-bottom: 10px;
+}
+
+.project-card a {
+    color: #00ff41;
+    text-decoration: none;
+    font-weight: bold;
 }
