@@ -13,7 +13,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Efeito de "scanlines" (linhas de monitor antigo) */
 body::before {
     content: "";
     position: fixed;
@@ -33,7 +32,7 @@ body::before {
 }
 
 h1, h2, h3 {
-    text-shadow: 0 0 3px #00ff41; /* Um brilho mais sutil e nítido */
+    text-shadow: 0 0 3px #00ff41;
 }
 
 .container {
@@ -43,82 +42,11 @@ h1, h2, h3 {
     display: flex; /* Para centralizar os conteúdos */
     justify-content: center;
     align-items: center;
-    position: relative; /* Necessário para o efeito Matrix */
-    overflow: hidden; /* Garante que a chuva não saia da tela */
 }
 
-/* --- TELA DE HACK (NOVA) --- */
-#hack-screen {
-    background-color: #000;
-    color: #00ff41;
-    z-index: 1000; /* Fica acima de tudo */
-    position: fixed; /* Ocupa a tela toda */
-    top: 0; left: 0;
-}
-
-.hack-message {
-    z-index: 1001; /* Fica acima do efeito Matrix */
-    text-align: center;
-    background: rgba(0,0,0,0.7); /* Fundo semi-transparente para leitura */
-    padding: 20px 40px;
-    border: 2px solid #00ff41;
-    box-shadow: 0 0 20px #00ff41;
-}
-
-.hack-message .typewriter {
-    font-size: 3rem;
-    display: inline-block; /* Para o efeito de digitação */
-    overflow: hidden; /* Esconde o texto que ainda não foi "digitado" */
-    white-space: nowrap; /* Não quebra a linha */
-    border-right: 3px solid #00ff41; /* Cursor piscando no final */
-    animation: typing 3s steps(23, end) forwards, blink-cursor 0.75s step-end infinite;
-    margin-bottom: 20px;
-}
-
-.hack-message p {
-    font-size: 1.2rem;
-    margin-top: 10px;
-    color: #888;
-    animation: fadeInMessage 1s forwards 3s; /* Aparece depois da digitação */
-    opacity: 0;
-}
-
-/* Animação de digitação */
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-/* Animação do cursor de digitação */
-@keyframes blink-cursor {
-    from, to { border-color: transparent }
-    50% { border-color: #00ff41; }
-}
-
-/* Animação para as mensagens secundárias */
-@keyframes fadeInMessage {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-
-/* Efeito Matrix de chuva de caracteres */
-.matrix-effect {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none; /* Não interfere com cliques */
-    z-index: 100;
-}
-/* O JS vai criar os caracteres e animá-los */
-
-
-/* --- TELA DE LOGIN --- */
+/* --- TELA DE LOGIN (Visível por padrão) --- */
 #login-screen {
-    /* Removido o display:flex aqui, será ativado pelo JS */
+    /* (Já tem display: flex pelo .container) */
 }
 
 .login-box {
@@ -128,6 +56,7 @@ h1, h2, h3 {
     padding: 25px;
     background: #111;
     box-shadow: 0 0 15px #00ff41;
+    z-index: 10; /* Fica na frente das scanlines */
 }
 
 .login-box h1 {
@@ -163,10 +92,6 @@ input[type="text"], input[type="password"] {
     outline: none;
 }
 
-input[type="text"]:focus, input[type="password"]:focus {
-    box-shadow: 0 0 10px #00ff41;
-}
-
 .btn-scanline {
     background-color: #00ff41;
     color: #0d0d0d;
@@ -184,25 +109,77 @@ input[type="text"]:focus, input[type="password"]:focus {
     background-color: #0d0d0d;
     color: #00ff41;
     border: 1px solid #00ff41;
-    box-shadow: 0 0 10px #00ff41;
 }
 
 .error-message {
-    color: #ff0000; /* Vermelho erro */
+    color: #ff0000;
     text-shadow: 0 0 5px #ff0000;
     margin-top: 10px;
-    height: 20px; /* Reserva espaço */
+    height: 20px;
+}
+
+/* --- TELA DE HACK (NOVA) --- */
+#hack-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    display: none; /* JS vai ativar isso */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+#matrix-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+}
+
+.hack-message {
+    position: relative;
+    z-index: 1002; /* Na frente do canvas */
+    text-align: center;
+    color: #00ff41;
+    text-shadow: 0 0 15px #00ff41;
+}
+
+.hack-message h1 {
+    font-size: 4.5rem; /* BEM GRANDE */
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .15em solid #00ff41;
+    animation: 
+        typewriter-anim 3s steps(23, end) forwards,
+        blink-anim .75s step-end infinite;
+}
+
+/* Animação de digitação */
+@keyframes typewriter-anim {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-anim {
+    from, to { border-color: transparent }
+    50% { border-color: #00ff41; }
 }
 
 
-/* --- TELA DO PORTFOLIO --- */
+/* --- TELA DO PORTFOLIO (Escondida) --- */
 #portfolio-screen {
-    /* display: flex;  <= JS vai mudar para flex quando logar */
     max-width: 1200px;
     margin: 0 auto;
     gap: 20px;
-    opacity: 0; /* Começa invisível para animar */
+    opacity: 0;
     animation: fadeIn 1s forwards;
+    /* display: none; (JS vai mudar para flex) */
 }
 
 @keyframes fadeIn {
@@ -235,6 +212,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     padding: 5px 0;
     animation: textAppear 0.5s;
 }
+
 @keyframes textAppear {
     from { opacity: 0; transform: translateX(-10px); }
     to { opacity: 1; transform: translateX(0); }
@@ -263,13 +241,9 @@ input[type="text"]:focus, input[type="password"]:focus {
     object-fit: cover;
 }
 
-.header-info h1 {
-    font-size: 2rem;
-}
-
 .header-info p {
     color: #bbb;
-    text-shadow: none; /* Texto de info sempre nítido */
+    text-shadow: none;
     font-size: 1.1rem;
 }
 
@@ -290,11 +264,6 @@ section p, section li {
     line-height: 1.6;
 }
 
-section ul {
-    list-style-position: inside;
-    margin-top: 10px;
-}
-
 .highlight {
     background-color: #00ff41;
     color: #0d0d0d;
@@ -313,16 +282,6 @@ section ul {
 .project-card {
     border: 1px solid #00ff41;
     padding: 15px;
-    transition: all 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 10px #00ff41;
-}
-
-.project-card h3 {
-    margin-bottom: 10px;
 }
 
 .project-card a {
@@ -339,7 +298,6 @@ section ul {
     padding: 15px;
 }
 
-/* Animação do cursor */
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
@@ -349,7 +307,6 @@ section ul {
     animation: blink 1.2s infinite;
 }
 
-/* Estilo da Arte ASCII */
 .ascii-art {
     font-size: 0.4rem;
     text-align: center;
