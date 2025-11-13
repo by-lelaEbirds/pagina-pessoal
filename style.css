@@ -10,7 +10,6 @@ body {
     color: #00ff41;
     font-family: 'VT323', monospace;
     font-size: 18px;
-    /* MUDANÇA: O text-shadow global foi REMOVIDO daqui para melhorar a leitura */
     overflow-x: hidden;
 }
 
@@ -33,7 +32,6 @@ body::before {
     z-index: 999;
 }
 
-/* === MUDANÇA ADICIONADA: Brilho sutil SÓ nos títulos === */
 h1, h2, h3 {
     text-shadow: 0 0 3px #00ff41; /* Um brilho mais sutil e nítido */
 }
@@ -42,13 +40,85 @@ h1, h2, h3 {
     width: 100%;
     min-height: 100vh;
     padding: 20px;
+    display: flex; /* Para centralizar os conteúdos */
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Necessário para o efeito Matrix */
+    overflow: hidden; /* Garante que a chuva não saia da tela */
 }
+
+/* --- TELA DE HACK (NOVA) --- */
+#hack-screen {
+    background-color: #000;
+    color: #00ff41;
+    z-index: 1000; /* Fica acima de tudo */
+    position: fixed; /* Ocupa a tela toda */
+    top: 0; left: 0;
+}
+
+.hack-message {
+    z-index: 1001; /* Fica acima do efeito Matrix */
+    text-align: center;
+    background: rgba(0,0,0,0.7); /* Fundo semi-transparente para leitura */
+    padding: 20px 40px;
+    border: 2px solid #00ff41;
+    box-shadow: 0 0 20px #00ff41;
+}
+
+.hack-message .typewriter {
+    font-size: 3rem;
+    display: inline-block; /* Para o efeito de digitação */
+    overflow: hidden; /* Esconde o texto que ainda não foi "digitado" */
+    white-space: nowrap; /* Não quebra a linha */
+    border-right: 3px solid #00ff41; /* Cursor piscando no final */
+    animation: typing 3s steps(23, end) forwards, blink-cursor 0.75s step-end infinite;
+    margin-bottom: 20px;
+}
+
+.hack-message p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #888;
+    animation: fadeInMessage 1s forwards 3s; /* Aparece depois da digitação */
+    opacity: 0;
+}
+
+/* Animação de digitação */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Animação do cursor de digitação */
+@keyframes blink-cursor {
+    from, to { border-color: transparent }
+    50% { border-color: #00ff41; }
+}
+
+/* Animação para as mensagens secundárias */
+@keyframes fadeInMessage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/* Efeito Matrix de chuva de caracteres */
+.matrix-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none; /* Não interfere com cliques */
+    z-index: 100;
+}
+/* O JS vai criar os caracteres e animá-los */
+
 
 /* --- TELA DE LOGIN --- */
 #login-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* Removido o display:flex aqui, será ativado pelo JS */
 }
 
 .login-box {
@@ -269,7 +339,7 @@ section ul {
     padding: 15px;
 }
 
-/* === MUDANÇA ADICIONADA: Animação do cursor === */
+/* Animação do cursor */
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
@@ -279,12 +349,14 @@ section ul {
     animation: blink 1.2s infinite;
 }
 
-/* === MUDANÇA ADICIONADA: Estilo da Arte ASCII === */
+/* Estilo da Arte ASCII */
 .ascii-art {
-    font-size: 0.8rem; /* Tamanho menor para caber */
+    font-size: 0.4rem;
     text-align: center;
     margin-top: 25px;
     line-height: 1.1;
-    text-shadow: none; /* Garantia de nitidez total */
-    color: #00a02a; /* Um verde um pouco mais escuro, pra dar profundidade */
+    text-shadow: none;
+    color: #00a02a;
+    overflow-x: auto;
+    padding: 5px;
 }
