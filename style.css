@@ -6,11 +6,11 @@
 }
 
 body {
-    background-color: #0d0d0d; /* Quase preto */
-    color: #00ff41; /* Verde "hacker" */
-    font-family: 'VT323', monospace; /* Fonte pixelada/terminal */
+    background-color: #0d0d0d;
+    color: #00ff41;
+    font-family: 'VT323', monospace;
     font-size: 18px;
-    text-shadow: 0 0 3px #00ff41, 0 0 5px #00ff41; /* Efeito neon */
+    /* MUDANÇA: O text-shadow global foi REMOVIDO daqui para melhorar a leitura */
     overflow-x: hidden;
 }
 
@@ -31,6 +31,11 @@ body::before {
     );
     pointer-events: none;
     z-index: 999;
+}
+
+/* === MUDANÇA ADICIONADA: Brilho sutil SÓ nos títulos === */
+h1, h2, h3 {
+    text-shadow: 0 0 3px #00ff41; /* Um brilho mais sutil e nítido */
 }
 
 .container {
@@ -137,11 +142,11 @@ input[type="text"]:focus, input[type="password"]:focus {
 
 /* Sidebar */
 .sidebar {
-    flex: 0 0 250px; /* Não cresce, não encolhe, base de 250px */
+    flex: 0 0 250px;
     border: 2px solid #00ff41;
     background: #111;
     padding: 15px;
-    height: fit-content; /* Altura se ajusta ao conteúdo */
+    height: fit-content;
 }
 
 .sidebar h3 {
@@ -160,7 +165,6 @@ input[type="text"]:focus, input[type="password"]:focus {
     padding: 5px 0;
     animation: textAppear 0.5s;
 }
-/* Animação para lista */
 @keyframes textAppear {
     from { opacity: 0; transform: translateX(-10px); }
     to { opacity: 1; transform: translateX(0); }
@@ -168,7 +172,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 
 /* Conteúdo Principal */
 .content {
-    flex: 1; /* Ocupa o resto do espaço */
+    flex: 1;
 }
 
 .header-matrix {
@@ -195,7 +199,7 @@ input[type="text"]:focus, input[type="password"]:focus {
 
 .header-info p {
     color: #bbb;
-    text-shadow: none;
+    text-shadow: none; /* Texto de info sempre nítido */
     font-size: 1.1rem;
 }
 
@@ -257,11 +261,30 @@ section ul {
     font-weight: bold;
 }
 
-/* === MUDANÇA ADICIONADA AQUI === */
 .main-welcome {
     font-size: 2rem;
     margin-bottom: 20px;
     border: 1px dashed #00ff41;
     background: #111;
     padding: 15px;
+}
+
+/* === MUDANÇA ADICIONADA: Animação do cursor === */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.blinking-cursor {
+    animation: blink 1.2s infinite;
+}
+
+/* === MUDANÇA ADICIONADA: Estilo da Arte ASCII === */
+.ascii-art {
+    font-size: 0.8rem; /* Tamanho menor para caber */
+    text-align: center;
+    margin-top: 25px;
+    line-height: 1.1;
+    text-shadow: none; /* Garantia de nitidez total */
+    color: #00a02a; /* Um verde um pouco mais escuro, pra dar profundidade */
 }
