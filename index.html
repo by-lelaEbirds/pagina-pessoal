@@ -1,195 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Página Hacker (do bem, pô) de Matheus</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* estilão matrix kkjkj */
-    #matrixCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      background-color: black;
-    }
-
-    /* aqui é o terminal */
-    body {
-      font-family: 'Courier New', monospace;
-      background-color: black;
-      color: #00ff00;
-      margin: 0;
-      padding: 0;
-    }
-
-    .terminal {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      padding: 1rem;
-      font-size: 1rem;
-      color: #00ff00;
-      background: rgba(0, 0, 0, 0.6);
-      width: 100%;
-      z-index: 1;
-    }
-
-    .blinking-cursor {
-      animation: blink 1s steps(2, start) infinite;
-    }
-
-    @keyframes blink {
-      to {
-        visibility: hidden;
-      }
-    }
-
-    header, main, section, h1, h2, p, ul, li, a, button {
-      color: #00ff00;
-    }
-
-    a {
-      color: #00ff00;
-      text-decoration: underline;
-    }
-
-    button {
-      background-color: #003300;
-      color: #00ff00;
-      border: 1px solid #00ff00;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #005500;
-    }
-
-    img.perfil-img {
-      border: 2px solid #00ff00;
-      border-radius: 50%;
-      width: 180px;
-      display: block;
-      margin: 1rem auto;
-    }
-
-    section {
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 1rem;
-      margin: 1rem;
-      border: 1px solid #00ff00;
-      border-radius: 8px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio_</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
-<body onload="boasVindas()">
-  <canvas id="matrixCanvas"></canvas>
+<body>
 
-  <header>
-    <h1>Matheus Peres da Silva</h1>
-    <p>Estudante de Negócios Digitais</p>
-    <img src="perfil.jpg" alt="Foto de perfil de Matheus Peres da Silva" class="perfil-img" />
-  </header>
+    <div id="login-screen" class="container">
+        <div class="login-box">
+            <h1>system.init()</h1>
+            <p>// Autenticação necessária para acessar o portfólio_</p>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="nome">>&nbsp;username:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="senha">>&nbsp;password:</label>
+                    <input type="password" id="senha" name="senha" required>
+                </div>
+                <button type="submit" class="btn-scanline">./execute_login.sh</button>
+                <p id="login-error" class="error-message"></p>
+            </form>
+        </div>
+    </div>
 
-  <main>
-    <section id="sobre">
-      <h2>Sobre Mim</h2>
-      <p>Tenho 23 anos, sou estudante apaixonado por tecnologia, inovação e negócios digitais. Atualmente estudo Negócios Digitais na FAE Centro Universitário. Antes disso, cursei quatro anos de Negócios Internacionais...</p>
-    </section>
+    <div id="portfolio-screen" class="container" style="display: none;">
+        
+        <aside class="sidebar">
+            <h3>// VISITANTES CONECTADOS</h3>
+            <ul id="lista-visitantes">
+                </ul>
+        </aside>
 
-    <section id="habilidades">
-      <h2>Habilidades</h2>
-      <ul>
-        <li>HTML5</li>
-        <li>CSS3</li>
-        <li>JavaScript</li>
-        <li>Git e GitHub</li>
-        <li>Infraestrutura de TI (prática informal)</li>
-        <li>Montagem de servidores domésticos</li>
-      </ul>
-    </section>
+        <main class="content">
+            <header class="header-matrix">
+                <img src="perfil.jpg" alt="Foto de Perfil" class="profile-pic">
+                <div class="header-info">
+                    <h1 id="welcome-message"></h1>
+                    <p>Desenvolvedor Full Stack | Entusiasta de Cybersecurity</p>
+                </div>
+            </header>
 
-    <section id="interesses">
-      <h2>Interesses Profissionais</h2>
-      <p>Tenho interesse em desenvolvimento front-end, transformação digital, produtos digitais, UX/UI, marketing digital e empreendedorismo.</p>
-    </section>
+            <section id="sobre">
+                <h2>>&nbsp;./sobre_mim.sh</h2>
+                <p>Olá! Sou um estudante de programação apaixonado por resolver problemas. Meu foco é aprender e aplicar tecnologias modernas para criar soluções eficientes e seguras...</p>
+                </section>
 
-    <section id="evolucao">
-      <h2>Evolução Futura</h2>
-      <p>Em breve, este espaço será preenchido com projetos, ideias, artigos ou experiências profissionais.</p>
-    </section>
+            <section id="projetos">
+                <h2>>&nbsp;./meus_projetos/</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3>Projeto 1: API de Tarefas</h3>
+                        <p>Backend (Node.js) e Frontend (HTML/JS) para gerenciamento de tarefas.</p>
+                        <a href="#">[ver_repo]</a>
+                    </div>
+                    <div class="project-card">
+                        <h3>Projeto 2: EduConnect</h3>
+                        <p>Plataforma de mentoria para projeto universitário.</p>
+                        <a href="#">[ver_repo]</a>
+                    </div>
+                    </div>
+            </section>
 
-    <section id="contato">
-      <h2>Contato</h2>
-      <a href="mailto:matheusperescurriculum@gmail.com">E-mail</a> |
-      <a href="https://www.linkedin.com/in/matheus-peres-da-silva/" target="_blank">LinkedIn</a> |
-      <a href="https://github.com/by-lelaEbirds" target="_blank">GitHub</a>
-    </section>
+            <section id="disciplina">
+                <h2>>&nbsp;./log_disciplina.txt</h2>
+                <p>Nesta disciplina, consolidei conhecimentos em:</p>
+                <ul>
+                    <li><span class="highlight">[OK]</span> Desenvolvimento de APIs RESTful com Node.js e Express.</li>
+                    <li><span class="highlight">[OK]</span> Consumo de APIs (fetch) e manipulação do DOM.</li>
+                    <li><span class="highlight">[OK]</span> Arquitetura Cliente-Servidor.</li>
+                    <li><span class="highlight">[OK]</span> Deploy de aplicações em nuvem (Render).</li>
+                    <li><span class="highlight">[OK]</span> Integração com serviços de terceiros (Airtable).</li>
+                </ul>
+            </section>
 
-    <section id="reflexao">
-      <h2>O que eu aprendi com essa missão?</h2>
-      <p>Aprendi a construir uma página pessoal estruturada, com HTML semântico, CSS e JavaScript. Essa página representa minha identidade digital de forma clara.</p>
-    </section>
+        </main>
+    </div>
 
-    <!-- Botão de alternar tema com classe correta -->
-    <button onclick="toggleTheme()" class="botao-tema">🌙 Alternar Tema</button>
-  </main>
-
-  <!-- Terminal único, correto -->
-  <div class="terminal">
-    matheus@localhost:~$ echo "Bem-vindo ao meu universo digital"
-    <span class="blinking-cursor">|</span>
-  </div>
-
-  <script>
-    // chuva do matriquiz
-    const canvas = document.getElementById('matrixCanvas');
-    const ctx = canvas.getContext('2d');
-
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-
-    const letters = '01アァイゥエオカガキギクグケゲコゴ'.split('');
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = Array.from({ length: columns }).fill(1);
-
-    function draw() {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = '#0F0';
-      ctx.font = fontSize + 'px monospace';
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-
-        drops[i]++;
-      }
-    }
-
-    setInterval(draw, 33);
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-
-    // Mensagem para quem abrir o site etc e tal
-    function boasVindas() {
-      alert("Bem-vindo(a) à página pessoal de Matheus Peres da Silva!");
-    }
-
-    function toggleTheme() {
-      document.body.classList.toggle("dark-theme");
-    }
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
