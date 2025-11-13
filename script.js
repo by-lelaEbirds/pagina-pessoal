@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- LÓGICA DO TYPEWRITER DOS TÍTULOS ---
+    // --- LÓGICA DO NOVO TYPEWRITER DOS TÍTULOS ---
     function typeWriter(element, text, speed) {
         let i = 0;
         element.innerHTML = ""; // Limpa o span
@@ -205,7 +205,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const span = entry.target.querySelector('.type-title');
                     if (span && !span.classList.contains('typed')) {
                         span.classList.add('typed');
-g                        const text = span.getAttribute('data-text');
+                        // === ESTE FOI O ERRO ===
+                        // A linha abaixo tinha um 'g' sobrando
+                        // Corrigido:
+                        const text = span.getAttribute('data-text');
                         typeWriter(span, text, 50); // 50ms de velocidade
                     }
                     observer.unobserve(entry.target);
@@ -217,4 +220,5 @@ g                        const text = span.getAttribute('data-text');
             observer.observe(section);
         });
     }
+
 });
