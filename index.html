@@ -1,156 +1,117 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio_</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-</head>
-<body>
+<section id="projetos">
+    <h2>>&nbsp;./dossie_tecnico/</h2>
+    <div class="project-grid">
 
-    <div id="login-screen" class="container">
-        <div class="login-box">
-            <h1>system.init()</h1>
-            <p>// Autenticação necessária para acessar o portfólio_</p>
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="nome">>&nbsp;username:</label>
-                    <input type="text" id="nome" name="nome" required>
-                </div>
-                <div class="form-group">
-                    <label for="senha">>&nbsp;password:</label>
-                    <input type="password" id="senha" name="senha" required>
-                </div>
-                <button type="submit" class="btn-scanline">./execute_login.sh</button>
-                <p id="login-error" class="error-message"></p>
-            </form>
-        </div>
-    </div>
-
-    <div id="hack-screen">
-        <canvas id="matrix-canvas"></canvas>
-        
-        <div class="hack-message ransom-note">
-            <h1 class="typewriter">YOUR FILES ARE ENCRYPTED!</h1>
-            
-            <p class="ransom-text">
-                All your important files have been encrypted. To recover your data,
-                you must send 0.5 BTC to the wallet below.
-            </p>
-            
-            <div class="btc-wallet">
-                <span>bc1qxy2kcy9ycy0wtyrw9y8qoy2kcy9ycy0wtyrw9y</span>
+        <div class="project-card">
+            <h3>>&nbsp;ToDo Heroes</h3>
+            <p>Gerenciador de tarefas com CRUD completo e persistência de dados no navegador.</p>
+            <div class="project-card-skills">
+                <span class="skill-tag frontend">HTML5</span>
+                <span class="skill-tag frontend">CSS3</span>
+                <span class="skill-tag frontend">JavaScript (ES6+)</span>
+                <span class="skill-tag frontend">Manipulação do DOM</span>
+                <span class="skill-tag data">CRUD</span>
+                <span class="skill-tag data">LocalStorage</span>
             </div>
-            
-            <div class="timer">
-                Time remaining: <span id="countdown">10:00</span>
-            </div>
-            
-            <button id="pay-button" class="btn-scanline pay-button">
-                ./pay_ransom.sh
-            </button>
-            <p id="payment-status"></p>
+            <a href="https://github.com/by-lelaEbirds/ToDo-Heroes.git" target="_blank">[ver_repositório]</a>
         </div>
-    </div>
 
-    <div id="portfolio-screen" class="container" style="display: none;">
+        <div class="project-card">
+            <h3>>&nbsp;Feedback Radar</h3>
+            <p>Plataforma para coleta de feedback com dashboard e visualização de dados.</p>
+            <div class="project-card-skills">
+                <span class="skill-tag frontend">UX (Design Intuitivo)</span>
+                <span class="skill-tag frontend">JavaScript (ES6+)</span>
+                <span class="skill-tag frontend">Chart.js</span>
+                <span class="skill-tag data">LocalStorage</span>
+            </div>
+            <a href="https://github.com/by-lelaEbirds/FeedBack-Radar.git" target="_blank">[ver_repositório]</a>
+        </div>
+
+        <div class="project-card">
+            <h3>>&nbsp;Token CloudConnect</h3>
+            <p>Sistema de autenticação backend-to-backend usando Tokens de Acesso Pessoal (PAT).</p>
+            <div class="project-card-skills">
+                <span class="skill-tag backend">APIs RESTful</span>
+                <span class="skill-tag backend">Requisições HTTP</span>
+                <span class="skill-tag security">Autenticação (PAT)</span>
+                <span class="skill-tag security">Segurança (Secrets)</span>
+                <span class="skill-tag backend">Teste de API (Postman)</span>
+                <span class="skill-tag backend">Validação de Dados</span>
+            </div>
+            <a href="https://github.com/by-lelaEbirds/Token_CloudConnect.git" target="_blank">[ver_repositório]</a>
+        </div>
+
+        <div class="project-card">
+            <h3>>&nbsp;Conecta+ (MVP)</h3>
+            <p>Prototipação e design de UX/UI para um MVP de aplicação web.</p>
+            <div class="project-card-skills">
+                <span class="skill-tag frontend">UX (Prototipação)</span>
+                <span class="skill-tag management">Design de Produto</span>
+            </div>
+            <a href="https://github.com/by-lelaEbirds/conecta-plus-mvp.git" target="_blank">[ver_repositório]</a>
+        </div>
+
+        <div class="project-card">
+            <h3>>&nbsp;SmartSolutions Sprint</h3>
+            <p>Aplicação prática de metodologias ágeis para gerenciamento de projeto de software.</p>
+            <div class="project-card-skills">
+                <span class="skill-tag management">SCRUM</span>
+                <span class="skill-tag management">Gerenciamento Ágil</span>
+                <span class="skill-tag management">Kanban</span>
+            </div>
+            <a href="https://github.com/by-lelaEbirds/SmartSolutions-Sprint-Scrum-.git" target="_blank">[ver_repositório]</a>
+        </div>
+
+        <div class="project-card">
+            <h3>>&nbsp;EduConnect</h3>
+            <p>Documentação e planejamento de uma plataforma de mentorias online usando métodos ágeis.</p>
+            <div class="project-card-skills">
+                <span class="skill-tag management">SCRUM</span>
+                <span class="skill-tag management">Kanban</span>
+                <span class="skill-tag management">Diagramação (Fluxos)</span>
+                <span class="skill-tag frontend">UX (Requisitos)</span>
+                <span class="skill-tag data">Lógica de Persistência</span>
+            </div>
+            <a href="https://github.com/by-lelaEbirds/EduConnect---Plataforma-de-Mentorias-Online.git" target="_blank">[ver_repositório]</a>
+        </div>
         
-        <aside class="sidebar">
-            <h3>// VISITANTES CONECTADOS</h3>
-            <ul id="lista-visitantes">
-                </ul>
-        </aside>
+        <div class="project-card">
+            <h3>>&nbsp;O Mestre dos Dados</h3>
+            <p>API RESTful completa com CRUD e conexão direta com banco de dados (Airtable).</p>
+            <div class="project-card-skills">
+                <span class="skill-tag backend">Node.js / Express</span>
+                <span class="skill-tag backend">APIs RESTful</span>
+                <span class="skill-tag data">CRUD</span>
+                <span class="skill-tag data">Modelagem de Dados</span>
+                <span class="skill-tag backend">Conexão (Airtable)</span>
+            </div>
+            <a href="httpsok" target="_blank">[link_nao_fornecido]</a>
+        </div>
 
-        <main class="content">
-            <header class="header-matrix">
-                <img src="perfil.jpg" alt="Foto de Perfil" class="profile-pic">
-                <div class="header-info">
-                    <p>Entusiasta de Cybersecurity</p>
-                </div>
-            </header>
+        <div class="project-card">
+            <h3>>&nbsp;API Comedian</h3>
+            <p>Microsserviço de API RESTful para servir dados estruturados em JSON.</p>
+            <div class="project-card-skills">
+                <span class="skill-tag backend">Node.js / Flask</span>
+                <span class="skill-tag backend">APIs RESTful</span>
+                <span class="skill-tag backend">Manipulação de JSON</span>
+                <span class="skill-tag backend">Resolução de Problemas</span>
+            </div>
+            <a href="https://github.com/by-lelaEbirds/API-Comedian.git" target="_blank">[ver_repositório]</a>
+        </div>
 
-            <h1 id="welcome-message" class="main-welcome">> Bem-vindo<span class="blinking-cursor">_</span></h1>
+        <div class="project-card">
+            <h3>>&nbsp;O Validador de Senhas</h3>
+            <p>Microsserviço de lógica pura focado em segurança e validação de dados (Regex).</p>
+            <div class="project-card-skills">
+                <span class="skill-tag backend">Node.js / Flask</span>
+                <span class="skill-tag backend">Lógica de Negócio</span>
+                <span class="skill-tag security">Validação (Regex)</span>
+                <span class="skill-tag backend">APIs RESTful</span>
+            </div>
+            <a href="httpsok" target="_blank">[link_nao_fornecido]</a>
+        </div>
 
-            <section id="sobre">
-                <h2>>&nbsp;./sobre_mim.sh</h2>
-                <p>Olá! Sou um estudante de programação apaixonado por resolver problemas...</p>
-                
-                <pre class="ascii-art">
-      uuuuuuuuuuuuuuuuuuuuu.
-                   .u$$$$$$$$$$$$$$$$$$$$$$$$$$W.
-                 u$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$Wu.
-               $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$i
-              $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-         `    $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-           .i$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$i
-           $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$W
-          .$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$W
-         .$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$i
-         #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$.
-         W$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-$u       #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$~
-$#      `"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-$i        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-$$        #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-$$         $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-#$.        $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#
- $$      $iW$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$!
- $$i      $$$$$$$#"" `"""#$$$$$$$$$$$$$$$$$#""""""#$$$$$$$$$$$$$$$W
- #$$W    `$$$#"            "       !$$$$$`           `"#$$$$$$$$$$#
-  $$$     ``                 ! !iuW$$$$$                 #$$$$$$$#
-  #$$    $u                  $   $$$$$$$                  $$$$$$$~
-   "#    #$$i.               #   $$$$$$$.                 `$$$$$$
-          $$$$$i.                """#$$$$i.               .$$$$#
-          $$$$$$$$!         .   `    $$$$$$$$$i           $$$$$
-          `$$$$$  $iWW   .uW`        #$$$$$$$$$W.       .$$$$$$#
-            "#$$$$$$$$$$$$#`          $$$$$$$$$$$iWiuuuW$$$$$$$$W
-               !#""    ""             `$$$$$$$##$$$$$$$$$$$$$$$$
-          i$$$$    .                   !$$$$$$ .$$$$$$$$$$$$$$$#
-         $$$$$$$$$$`                    $$$$$$$$$Wi$$$$$$#"#$$`
-         #$$$$$$$$$W.                   $$$$$$$$$$$#   ``
-          `$$$$##$$$$!       i$u.  $. .i$$$$$$$$$#""
-             "     `#W       $$$$$$$$$$$$$$$$$$$`      u$#
-                            W$$$$$$$$$$$$$$$$$$      $$$$W
-                            $$`!$$$##$$$$``$$$$      $$$$!
-                           i$" $$$$  $$#"`  """     W$$$$
-                                                   W$$$$!
-                      uW$$  uu  uu.  $$$  $$$Wu#   $$$$$$
-                     ~$$$$iu$$iu$$$uW$$! $$$$$$i .W$$$$$$
-             ..  !   "#$$$$$$$$$$##$$$$$$$$$$$$$$$$$$$$#"
-             $$W  $     "#$$$$$$$iW$$$$$$$$$$$$$$$$$$$$$W
-             $#`   `       ""#$$$$$$$$$$$$$$$$$$$$$$$$$$$
-                              !$$$$$$$$$$$$$$$$$$$$$#`
-                              $$$$$$$$$$$$$$$$$$$$$$!
-                            $$$$$$$$$$$$$$$$$$$$$$$`
-                             $$$$$$$$$$$$$$$$$$$$"
-</pre>
-            </section>
-
-            <section id="projetos">
-                <h2>>&nbsp;./meus_projetos/</h2>
-                <div class="project-grid">
-                    <div class="project-card"><h3>Projeto 1: API de Tarefas</h3><p>...</p><a href="#">[ver_repo]</a></div>
-                    <div class="project-card"><h3>Projeto 2: EduConnect</h3><p>...</p><a href="#">[ver_repo]</a></div>
-                </div>
-            </section>
-
-            <section id="disciplina">
-                <h2>>&nbsp;./log_disciplina.txt</h2>
-                <p>Nesta disciplina, consolidei conhecimentos em:</p>
-                <ul>
-                    <li><span class="highlight">[OK]</span> Desenvolvimento de APIs RESTful com Node.js e Express.</li>
-                    <li><span class="highlight">[OK]</span> Consumo de APIs (fetch) e manipulação do DOM.</li>
-                    <li><span class="highlight">[OK]</span> Arquitetura Cliente-Servidor.</li>
-                    <li><span class="highlight">[OK]</span> Deploy de aplicações em nuvem (Render).</li>
-                    <li><span class="highlight">[OK]</span> Integração com serviços de terceiros (Airtable).</li>
-                </ul>
-            </section>
-        </main>
     </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+</section>
