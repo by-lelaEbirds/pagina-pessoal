@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const paymentStatus = document.getElementById('payment-status');
     const countdownEl = document.getElementById('countdown');
 
-    // --- LÓGICA DA CHUVA MATRIX (Igual, perfeita) ---
+    // --- LÓGICA DA CHUVA MATRIX ---
     const canvas = document.getElementById('matrix-canvas');
     const ctx = canvas.getContext('2d');
     let matrixInterval;
@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- LÓGICA DE LOGIN ---
-    // (Guarda os dados do usuário para depois)
     let currentUserData; 
 
     loginForm.addEventListener('submit', async (e) => {
@@ -96,9 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(errorData.error || 'Falha no login');
             }
 
-            currentUserData = await response.json(); // Salva os dados do usuário
+            currentUserData = await response.json();
             
-            // --- O SHOW COMEÇA AQUI ---
             loginScreen.style.display = 'none';
             hackScreen.style.display = 'flex';
             startMatrixRain();
@@ -116,27 +114,21 @@ document.addEventListener('DOMContentLoaded', () => {
         payButton.disabled = true;
         payButton.textContent = "PROCESSING...";
 
-        // Simula o "processamento" por 3 segundos
         await new Promise(resolve => setTimeout(resolve, 3000));
-
         paymentStatus.textContent = "// Payment successful. Decrypting files...";
-
-        // Espera mais 2 segundos
         await new Promise(resolve => setTimeout(resolve, 2000));
 
-        // --- A TRANSIÇÃO FINAL ---
         stopMatrixRain();
-        clearInterval(countdownInterval); // Para o timer
+        clearInterval(countdownInterval);
         hackScreen.style.display = 'none';
-
-        // Mostra o portfólio
         portfolioScreen.style.display = 'flex';
         
-        // Preenche os dados do portfólio
         welcomeMessage.textContent = `> Bem-vindo, ${currentUserData.nome}`;
         
-        // Carrega a lista de visitantes
         await carregarVisitantes(currentUserData.nome);
+
+        // *** ATIVA A ANIMAÇÃO DOS TÍTULOS ***
+        startTitleObserver();
     });
 
     /**
@@ -174,4 +166,42 @@ document.addEventListener('DOMContentLoaded', () => {
             visitorList.appendChild(liError);
         }
     }
+
+    // --- LÓGICA DO NOVO TYPEWRITER DOS TÍTULOS ---
+    function typeWriter(element, text, speed) {
+        let i = 0;
+        element.innerHTML = ""; // Limpa o span
+        function type() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                element.style.borderRight = "none"; // Remove o cursor piscando
+            }
+        }
+        type();
+    }
+
+    function startTitleObserver() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const span = entry.target.querySelector('.type-title');
+                    if (span && !span.classList.contains('typed')) {
+                        span.classList.add('typed'); // Marca para não digitar de novo
+                        const text = span.getAttribute('data-text');
+                        typeWriter(span, text, 50); // 50ms de velocidade
+                    }
+                    observer.unobserve(entry.target); // Para de observar depois de animar
+                }
+            });
+        }, { threshold: 0.5 }); // Inicia quando 50% da seção estiver visível
+
+        // Observa todas as seções dentro do portfólio
+        document.querySelectorAll('#portfolio-screen section').forEach(section => {
+            observer.observe(section);
+        });
+    }
+
 });
