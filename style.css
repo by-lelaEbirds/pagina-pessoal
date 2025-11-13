@@ -77,9 +77,8 @@ input[type="text"], input[type="password"] { width: 100%; background: #0d0d0d; b
     gap: 20px;
     opacity: 0;
     animation: fadeIn 1s forwards;
-    /* display: none; (JS vai mudar para flex) */
     
-    /* === MUDANÇA DA SIDEBAR (CORREÇÃO) === */
+    /* === CORREÇÃO DA SIDEBAR === */
     align-items: flex-start; /* Alinha os itens no topo */
 }
 
@@ -92,8 +91,8 @@ input[type="text"], input[type="password"] { width: 100%; background: #0d0d0d; b
     background: #111;
     padding: 15px;
     
-    /* === MUDANÇA DA SIDEBAR (CORREÇÃO) === */
-    /* height: fit-content; (REMOVIDO! Isso que jogava pra baixo) */
+    /* === CORREÇÃO DA SIDEBAR === */
+    /* height: fit-content; (REMOVIDO!) */
     position: sticky; /* Bônus: faz ela grudar no topo ao rolar */
     top: 20px;
 }
@@ -115,7 +114,7 @@ section p, section li { line-height: 1.6; }
 .blinking-cursor { animation: blink 1.2s infinite; }
 .ascii-art { font-size: 0.4rem; text-align: center; margin-top: 25px; line-height: 1.1; text-shadow: none; color: #00a02a; overflow-x: auto; padding: 5px; }
 
-/* === MUDANÇA: PROJETOS E SKILL TAGS (A "DICA" TOP) === */
+/* === NOVOS ESTILOS: PROJETOS E SKILL TAGS === */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
