@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONFIGURAÇÃO ---
-    // ATENÇÃO: Vamos preencher isso no final, depois do deploy do backend
-    const BACKEND_URL = "https://portfolio-backend-ts0d.onrender.com";
+    // A URL do seu backend (já deve estar correta)
+    const BACKEND_URL = "https://portfolio-backend-ts0d.onrender.com"; 
 
     // --- ELEMENTOS DO DOM ---
     const loginScreen = document.getElementById('login-screen');
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // --- SUCESSO! ---
             const userData = await response.json();
 
-            // 1. Mostrar mensagem de boas-vindas
+            // 1. Mostrar mensagem de boas-vindas (no novo local)
             welcomeMessage.textContent = `> Bem-vindo, ${userData.nome}_`;
 
             // 2. Esconder o login e mostrar o portfólio
@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
             portfolioScreen.style.display = 'flex'; // Usamos flex por causa da sidebar
 
             // 3. Carregar a lista de visitantes (incluindo o novo)
-            await carregarVisitantes();
+            //    === MUDANÇA AQUI ===
+            await carregarVisitantes(userData.nome); // Passamos o nome do novo usuário
 
         } catch (error) {
             console.error('Erro no login:', error);
@@ -62,8 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * Função para buscar a lista de nomes no backend
      * e popular a sidebar.
+     * * === FUNÇÃO TOTALMENTE ATUALIZADA ===
      */
-    async function carregarVisitantes() {
+    async function carregarVisitantes(novoNome = null) {
         try {
             const response = await fetch(`${BACKEND_URL}/visitantes`);
             
@@ -71,16 +73,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error('Não foi possível carregar a lista de visitantes');
             }
 
-            const nomes = await response.json();
+            const nomes = await response.json(); // Lista do Airtable
 
             // Limpa a lista antiga
             visitorList.innerHTML = ''; 
             
-            // Adiciona cada nome à lista <ul>
-            nomes.forEach(nome => {
+            // Cria um array para controlar nomes já exibidos
+            let nomesExibidos = [];
+
+            // 1. Adiciona o novo usuário (que acabou de logar) no topo
+            if (novoNome) {
                 const li = document.createElement('li');
-                li.textContent = `> ${nome}`;
+                li.textContent = `> ${novoNome}`;
                 visitorList.appendChild(li);
+                nomesExibidos.push(novoNome); // Marca como exibido
+            }
+
+            // 2. Adiciona o resto da lista, pulando duplicatas
+            nomes.forEach(nome => {
+                // Se o nome da lista NÃO ESTIVER no nosso controle
+                if (!nomesExibidos.includes(nome)) {
+                    const li = document.createElement('li');
+                    li.textContent = `> ${nome}`;
+                    visitorList.appendChild(li);
+                    nomesExibidos.push(nome); // Marca como exibido
+                }
             });
 
         } catch (error) {
