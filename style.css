@@ -92,7 +92,6 @@ input[type="text"], input[type="password"] { width: 100%; background: #0d0d0d; b
     padding: 15px;
     
     /* === CORREÇÃO DA SIDEBAR === */
-    /* height: fit-content; (REMOVIDO!) */
     position: sticky; /* Bônus: faz ela grudar no topo ao rolar */
     top: 20px;
 }
