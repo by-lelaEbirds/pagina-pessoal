@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONFIGURAÇÃO ---
     // ATENÇÃO: Vamos preencher isso no final, depois do deploy do backend
-    const BACKEND_URL = "URL_DO_SEU_BACKEND_NO_RENDER_VAI_AQUI"; 
+    const BACKEND_URL = "https://portfolio-backend-ts0d.onrender.com/"; 
 
     // --- ELEMENTOS DO DOM ---
     const loginScreen = document.getElementById('login-screen');
